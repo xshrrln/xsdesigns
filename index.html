@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sherralene Edusma - Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@100&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/betterworks');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+    
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 20px;
+            padding: 10px 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container .heading {
+            width: 100%;
+            padding-bottom: 15px;
+        }
+        
+        .container .heading h3 {
+            font-size: 2.5em;
+            font-weight: bolder;
+            border-bottom: 3px solid #fff;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .container .heading h3 span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            color: red;
+        }
+        
+        .hero-content {
+            margin: 20px 0;
+        }
+        
+        .hero-title {
+            font-family: 'Betterworks', sans-serif;
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .hero-title span {
+            color: red;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        
+        /* Navigation buttons */
+        .button {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        button.nav-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            gap: 30px;
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        button.nav-btn a {
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            font-size: large;
+        }
+        
+        button.nav-btn::after {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 90%;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        
+        button.nav-btn:last-child::after {
+            display: none;
+        }
+        
+        button.nav-btn a:hover {
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+            transition: .3s ease-in;
+            color: red;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            width: 100%;
+            padding: 10px;
+            margin-top: auto;
+        }
+        
+        .footer p {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5em;
+            }
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .container .heading h3 {
+                font-size: 2em;
+            }
+            
+            .hero-title {
+                font-size: 2.5em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .container {
+                margin: 0 10px;
+            }
+            
+            .container .heading h3 {
+                font-size: 1.5em;
+            }
+            
+            .hero-title {
+                font-size: 2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1em;
+            }
+            
+            button.nav-btn {
+                padding: 8px 15px;
+            }
+            
+            button.nav-btn a {
+                font-size: medium;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation moved to top -->
+    <div class="button" style="position: absolute; top: 20px; right: 20px; z-index: 1000;">
+        <button class="nav-btn"><a href="index.html">HOME</a></button>
+        <button class="nav-btn"><a href="gallery.html">DESIGNS</a></button>
+        <button class="nav-btn"><a href="about.html">ABOUT ME</a></button>
+    </div>
+    
+    <div class="container">
+
+        
+        <div class="hero-content">
+            <h1 class="hero-title"><span>Sherralene</span> Edusma</h1>
+            <p class="hero-subtitle">Graphic Designer & Creative Developer</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

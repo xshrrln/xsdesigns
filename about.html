@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Sherralene Edusma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@100&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/betterworks');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+    
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 20px;
+            padding: 10px 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container .heading {
+            width: 100%;
+            padding-bottom: 15px;
+        }
+        
+        .container .heading h3 {
+            font-size: 2.5em;
+            font-weight: bolder;
+            border-bottom: 3px solid #fff;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .container .heading h3 span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            color: red;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 15px 0;
+            text-align: left;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+        }
+
+        .about-title {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        h1 span, h4 span, p span {
+            color: red;
+        }
+
+        .intro-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .intro-text {
+            color: #fff;
+            padding: 20px 0;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .profile-image {
+            width: auto;
+            max-width: none;
+            height: auto;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+            max-height: 85vh;
+        }
+        
+        /* Navigation buttons */
+        .button {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        button.nav-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            gap: 30px;
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        button.nav-btn a {
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            font-size: large;
+        }
+        
+        button.nav-btn::after {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 90%;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        
+        button.nav-btn:last-child::after {
+            display: none;
+        }
+        
+        button.nav-btn a:hover {
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+            transition: .3s ease-in;
+            color: red;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .footer p {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 1024px) {
+            .about-content {
+                gap: 40px;
+            }
+            
+            .about-title {
+                font-size: 2.2em;
+            }
+            
+            .profile-image {
+                max-height: 80vh;
+                right: 20px;
+            }
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .container .heading h3 {
+                font-size: 2em;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .text-section {
+                text-align: center;
+                z-index: 2;
+                position: relative;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+            }
+            
+            .about-title {
+                font-size: 1.8em;
+            }
+            
+            .intro-heading {
+                font-size: 1.3em;
+            }
+            
+            .intro-text {
+                text-align: center;
+                font-size: 14px;
+            }
+            
+            .profile-image {
+                position: relative;
+                max-width: 100%;
+                max-height: 50vh;
+                margin: 20px auto;
+                bottom: auto;
+                right: auto;
+            }
+            
+            .image-section {
+                justify-content: center;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .container {
+                margin: 0 10px;
+            }
+            
+            .container .heading h3 {
+                font-size: 1.5em;
+            }
+            
+            .about-title {
+                font-size: 1.5em;
+            }
+            
+            .intro-heading {
+                font-size: 1.1em;
+            }
+            
+            .intro-text {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+            
+            button.nav-btn {
+                padding: 8px 15px;
+            }
+            
+            button.nav-btn a {
+                font-size: medium;
+            }
+            
+            .profile-image {
+                max-width: 100%;
+                max-height: 40vh;
+            }
+            
+            .text-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation moved to top -->
+    <div class="button" style="position: absolute; top: 20px; right: 20px; z-index: 1000;">
+        <button class="nav-btn"><a href="index.html">HOME</a></button>
+        <button class="nav-btn"><a href="gallery.html">DESIGNS</a></button>
+        <button class="nav-btn"><a href="about.html">ABOUT ME</a></button>
+    </div>
+    
+    <div class="container">
+        <div class="heading">
+            
+        </div>
+        
+        <div class="about-content">
+            <div class="text-section">
+                <h1 class="about-title">ABOUT <span>ME</span></h1>
+                <h4 class="intro-heading">Hello, I'm <span>Sherralene Edusma</span>!</h4>
+                
+                <div class="intro-text">
+                    <p>I'm an IT student at Bukidnon State University with a passion for graphic design and creative technology. Born on <span>July 17, 2004</span>, in the heart of <span>St. Peter, Malaybalay City</span></p>
+                    
+                    <p>As an <span>ISFJ</span> personality, I bring thoughtful attention to detail and a deep understanding of user experience to every project. I believe that great design is not just about how things look, but how they work and make people feel.</p>
+                    
+                    <p><span>Let's create something beautiful together</span>!</p>
+                </div>
+            </div>
+            
+            <div class="image-section">
+                <img src="profile/siralin.png" alt="Sherralene Edusma" class="profile-image">
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>

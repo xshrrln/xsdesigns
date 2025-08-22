@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Portfolio - Sherralene Edusma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@100&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/betterworks');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100;1,100&display=swap');
+    
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 20px;
+            padding: 20px 0;
+        }
+        
+        .container .heading {
+            width: 100%;
+            padding-bottom: 30px;
+        }
+        
+        .container .heading h3 {
+            font-size: 2.5em;
+            font-weight: bolder;
+            border-bottom: 3px solid #fff;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .container .heading h3 span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 100;
+            color: red;
+        }
+        
+        .container .heading h3 small {
+            font-size: 0.6em;
+            color: #888;
+            font-weight: normal;
+        }
+        
+        /* Filter Buttons */
+        .design-filters {
+            margin: 20px 0;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+        
+        .filter-btn.active {
+            background: red;
+            border-color: red;
+            color: #fff;
+        }
+        
+        /* Design Grid */
+        .container .box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .design-column {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        
+        .design-item {
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .design-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .design-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+        }
+        
+        .design-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .design-item:hover .design-card img {
+            transform: scale(1.05);
+        }
+        
+        .design-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .design-item:hover .design-overlay {
+            opacity: 1;
+        }
+        
+        .design-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .design-category {
+            background: red;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        
+        .view-design-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 12px;
+            transition: background 0.3s ease;
+        }
+        
+        .view-design-btn:hover {
+            background: red;
+            color: #fff;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .lightbox-content {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -40px; /* Move the entire preview container higher up */
+        }
+        
+        .lightbox .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            background: red;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 70vh;
+            margin-bottom: 20px;
+        }
+        
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        .lightbox-info {
+            text-align: center;
+            color: #fff;
+        }
+        
+        .lightbox-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+        
+        .design-category-badge {
+            background: red;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .lightbox-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .lightbox-actions button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-actions button:hover {
+            background: red;
+            color: #fff;
+        }
+        
+        /* No designs message */
+        .no-designs {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        
+        .no-designs p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        
+        /* Navigation buttons */
+        .button {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        button.nav-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            background-color: transparent;
+            border: none;
+            gap: 30px;
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        button.nav-btn a {
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px;
+            font-size: large;
+        }
+        
+        button.nav-btn::after {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 90%;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+        
+        button.nav-btn:last-child::after {
+            display: none;
+        }
+        
+        button.nav-btn a:hover {
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+            transition: .3s ease-in;
+            color: red;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 1024px) {
+            .container .box {
+                gap: 15px;
+            }
+            
+            .design-column {
+                min-width: 250px;
+            }
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .container .heading h3 {
+                font-size: 2em;
+            }
+            
+            .filter-buttons {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+            
+            .design-column {
+                min-width: 100%;
+            }
+            
+            .lightbox-content {
+                padding: 20px;
+            }
+            
+            .lightbox-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .container {
+                margin: 0 10px;
+            }
+            
+            .container .heading h3 {
+                font-size: 1.5em;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 150px;
+            }
+        }
+        
+        /* Loading animation */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .loading {
+            animation: pulse 1.5s infinite;
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        /* Password Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid red;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: red;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 20px 0;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #passwordInput {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #2a2a2a;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #passwordInput:focus {
+            border-color: red;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-buttons button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.3s ease;
+            min-width: 100px;
+        }
+
+        .modal-buttons button:hover {
+            background: red;
+            color: #fff;
+        }
+
+        #cancelPassword {
+            background: #333;
+            color: #fff;
+        }
+
+        #cancelPassword:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation moved to top -->
+    <div class="button" style="position: absolute; top: 20px; right: 20px; z-index: 1000;">
+        <button class="nav-btn"><a href="index.html">HOME</a></button>
+        <button class="nav-btn"><a href="gallery.html">DESIGNS</a></button>
+        <button class="nav-btn"><a href="about.html">ABOUT ME</a></button>
+    </div>
+    
+    <div class="container">
+        <div class="heading">
+           <br><br>
+            <!-- Filter buttons will be dynamically added here -->
+        </div>
+        
+        <div class="box">
+            <div class="loading">
+                <p>Loading your graphic designs...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Enter Password to Download</h3>
+            <input type="password" id="passwordInput" placeholder="Enter password..." autocomplete="off">
+            <div class="modal-buttons">
+                <button id="confirmPassword">Confirm</button>
+                <button id="cancelPassword">Cancel</button>
+            </div>
+            <p id="passwordError" style="color: red; display: none; margin-top: 10px;">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
